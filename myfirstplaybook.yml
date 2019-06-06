@@ -1,0 +1,17 @@
+---
+- name: this playbook will be used for httpd 
+  hosts: testservers
+  tasks:
+   - name: install httpd
+     yum: 
+      name: httpd
+      state: latest
+   - name: start service 
+     service: 
+      name: httpd
+      state: started
+      enabled: yes
+   - name: copy files
+     copy:
+      src: /root/index.html
+      dest: /var/www/html
